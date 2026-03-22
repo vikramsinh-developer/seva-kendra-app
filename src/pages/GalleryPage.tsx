@@ -2,19 +2,22 @@ import React, { useState } from 'react';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import { Box, IconButton, Paper, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import GalleryGrid from '../components/GalleryGrid';
 
 const GalleryPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const { t } = useTranslation();
+  const slideTitles = t('galleryPage.slides', { returnObjects: true }) as string[];
 
   const images = [
-    { src: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop', alt: 'E-Seva Kendra Office' },
-    { src: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop', alt: 'Government Services Counter' },
-    { src: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=300&fit=crop', alt: 'Digital Services Desk' },
-    { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop', alt: 'Customer Assistance' },
-    { src: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop', alt: 'Document Processing' }
+    { src: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop', alt: slideTitles[0] },
+    { src: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop', alt: slideTitles[1] },
+    { src: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=300&fit=crop', alt: slideTitles[2] },
+    { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop', alt: slideTitles[3] },
+    { src: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop', alt: slideTitles[4] }
   ];
 
   const nextSlide = () => {
@@ -52,9 +55,9 @@ const GalleryPage: React.FC = () => {
       <Paper sx={{ p: { xs: 2.5, md: 3.5 } }}>
         <Stack spacing={2}>
           <div>
-            <Typography variant="h2" gutterBottom>Gallery</Typography>
+            <Typography variant="h2" gutterBottom>{t('galleryPage.title')}</Typography>
             <Typography color="text.secondary">
-              A quick visual look at the service environment, support desks, and citizen assistance experience.
+              {t('galleryPage.subtitle')}
             </Typography>
           </div>
 

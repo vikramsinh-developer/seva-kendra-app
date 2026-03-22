@@ -1,19 +1,23 @@
 import React from 'react';
 import { alpha } from '@mui/material/styles';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
-import { AppBar, Avatar, Box, Button, Chip, Container, Stack, Toolbar, Typography } from '@mui/material';
+import { AppBar, Avatar, Box, Button, Chip, Container, Stack, ToggleButton, ToggleButtonGroup, Toolbar, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const navItems = [
-  { to: '/', label: 'Home' },
-  { to: '/services', label: 'Services' },
-  { to: '/gallery', label: 'Gallery' },
-  { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' }
+  { to: '/', labelKey: 'common.nav.home' },
+  { to: '/services', labelKey: 'common.nav.services' },
+  { to: '/gallery', labelKey: 'common.nav.gallery' },
+  { to: '/about', labelKey: 'common.nav.about' },
+  { to: '/contact', labelKey: 'common.nav.contact' }
 ];
 
 const Header: React.FC = () => {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  const activeLanguage = i18n.resolvedLanguage === 'mr' ? 'mr' : 'en';
 
   return (
     <AppBar
@@ -47,10 +51,10 @@ const Header: React.FC = () => {
                   whiteSpace: { xs: 'normal', sm: 'nowrap' }
                 }}
               >
-                Gurudatta Maha e-Seva Kendra
+                {t('header.brand')}
               </Typography>
               <Chip
-                label="Citizen services, forms, billing, and support"
+                label={t('header.tagline')}
                 size="small"
                 sx={{
                   mt: 0.75,
@@ -63,7 +67,34 @@ const Header: React.FC = () => {
             </Box>
           </Stack>
 
-          <Stack direction="row" spacing={1} sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+            <ToggleButtonGroup
+              exclusive
+              size="small"
+              value={activeLanguage}
+              onChange={(_, value) => {
+                if (value) {
+                  void i18n.changeLanguage(value);
+                }
+              }}
+              aria-label={t('common.languageSwitcher.ariaLabel')}
+              sx={{
+                bgcolor: 'rgba(255,255,255,0.75)',
+                borderRadius: 999,
+                '& .MuiToggleButton-root': {
+                  border: 0,
+                  px: { xs: 1.2, sm: 1.5 },
+                  py: 0.5,
+                  fontSize: { xs: '0.72rem', sm: '0.8rem' },
+                  textTransform: 'none'
+                }
+              }}
+            >
+              <ToggleButton value="en">{t('common.languages.en')}</ToggleButton>
+              <ToggleButton value="mr">{t('common.languages.mr')}</ToggleButton>
+            </ToggleButtonGroup>
+
+            <Stack direction="row" spacing={1} sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
             {navItems.map((item) => {
               const active = item.to === '/' ? location.pathname === item.to : location.pathname.startsWith(item.to);
 
@@ -75,10 +106,11 @@ const Header: React.FC = () => {
                   color={active ? 'primary' : 'inherit'}
                   variant={active ? 'contained' : 'text'}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Button>
               );
             })}
+          </Stack>
           </Stack>
         </Toolbar>
       </Container>

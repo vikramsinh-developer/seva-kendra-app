@@ -3,6 +3,7 @@ import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded';
 import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
 import { alpha } from '@mui/material/styles';
 import { Box, Button, Chip, Paper, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
 
 interface HeroProps {
@@ -18,6 +19,8 @@ const Hero: React.FC<HeroProps> = ({
   image,
   ctaButtons = []
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Paper
       sx={{
@@ -29,8 +32,8 @@ const Hero: React.FC<HeroProps> = ({
       <Box sx={{ display: 'grid', gap: { xs: 2.5, md: 4 }, alignItems: 'center', gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1.15fr) minmax(320px, 0.85fr)' } }}>
         <Stack spacing={{ xs: 2.25, md: 3 }}>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} alignItems={{ xs: 'flex-start', sm: 'center' }}>
-            <Chip icon={<VerifiedRoundedIcon />} label="Trusted local Maha e-Seva support" color="secondary" variant="outlined" sx={{ maxWidth: '100%' }} />
-            <Chip label="Fast submissions and document guidance" sx={{ maxWidth: '100%', bgcolor: 'rgba(255,255,255,0.8)' }} />
+            <Chip icon={<VerifiedRoundedIcon />} label={t('home.hero.trustedChip')} color="secondary" variant="outlined" sx={{ maxWidth: '100%' }} />
+            <Chip label={t('home.hero.fastChip')} sx={{ maxWidth: '100%', bgcolor: 'rgba(255,255,255,0.8)' }} />
           </Stack>
 
           <Box>
@@ -106,9 +109,9 @@ const Hero: React.FC<HeroProps> = ({
             }}
           />
           <Stack spacing={1} sx={{ position: 'absolute', left: { xs: 16, md: 20 }, right: { xs: 16, md: 20 }, bottom: { xs: 16, md: 20 }, color: '#fff' }}>
-            <Typography variant="h5" sx={{ color: '#fff', fontSize: { xs: '1.05rem', sm: '1.35rem' } }}>Walk in with documents. Leave with clarity.</Typography>
+            <Typography variant="h5" sx={{ color: '#fff', fontSize: { xs: '1.05rem', sm: '1.35rem' } }}>{t('home.hero.overlayTitle')}</Typography>
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.86)', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
-              Practical assistance for applications, payments, scans, certificates, and day-to-day service needs.
+              {t('home.hero.overlaySubtitle')}
             </Typography>
           </Stack>
         </Box>

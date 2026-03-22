@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import EastRoundedIcon from '@mui/icons-material/EastRounded';
 import { Avatar, Box, Button, Card, CardActions, CardContent, Chip, Dialog, DialogContent, IconButton, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
 import type { Service } from '../data/services';
 
@@ -15,6 +16,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   index
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -39,7 +41,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           </Stack>
 
           <Box>
-            <Typography variant="subtitle2" sx={{ mb: 1 }}>Common requests</Typography>
+            <Typography variant="subtitle2" sx={{ mb: 1 }}>{t('servicesSection.commonRequests')}</Typography>
             <Stack component="ul" spacing={0.75} sx={{ pl: 2, m: 0 }}>
               {service.documents.slice(0, 4).map((document) => (
                 <Typography key={document} component="li" variant="body2" color="text.secondary">
@@ -73,10 +75,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
         <CardActions sx={{ px: 3, pb: 3, pt: 0 }}>
           <Button component={RouterLink} to={`/services/${index}`} variant="contained" endIcon={<EastRoundedIcon />}>
-            View Details
+            {t('common.actions.viewDetails')}
           </Button>
           <Button color="secondary" onClick={() => setIsModalOpen(true)}>
-            Preview
+            {t('common.actions.preview')}
           </Button>
         </CardActions>
       </Card>

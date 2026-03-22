@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import { Box, Tabs, Tab, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import ServiceCard from '../components/ServiceCard';
-import { services } from '../data/services';
+import { getLocalizedServices } from '../data/services';
 
 const ServicesTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { t } = useTranslation();
 
-  const serviceEntries = services.map((service, index) => ({ service, index }));
+  const localizedServices = getLocalizedServices(t);
+  const serviceEntries = localizedServices.map((service, index) => ({ service, index }));
   const tabs = [
-    { label: 'Popular Services', items: serviceEntries.slice(0, 3) },
-    { label: 'All Services', items: serviceEntries },
-    { label: 'Dakhale', items: serviceEntries.filter(({ service }) => service.title === 'Dakhale') }
+    { label: t('servicesSection.tabs.popular'), items: serviceEntries.slice(0, 3) },
+    { label: t('servicesSection.tabs.all'), items: serviceEntries },
+    { label: t('servicesSection.tabs.dakhale'), items: serviceEntries.filter(({ service }) => service.id === 'dakhale') }
   ];
 
   return (
     <Box component="section" sx={{ display: 'grid', gap: 3 }}>
       <Box>
         <Typography variant="h2" gutterBottom>
-          Our Services
+          {t('servicesSection.title')}
         </Typography>
         <Typography color="text.secondary" sx={{ maxWidth: 720 }}>
-          Browse the most requested citizen and business support services available at the kendra.
+          {t('servicesSection.subtitle')}
         </Typography>
       </Box>
 

@@ -2,21 +2,23 @@ import React from 'react';
 import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
 import { alpha } from '@mui/material/styles';
 import { Fab, Tooltip } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const MobileShareFab: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
 
   if (location.pathname === '/share') {
     return null;
   }
 
   return (
-    <Tooltip title="Share" placement="left">
+    <Tooltip title={t('mobileShareFab.tooltip')} placement="left">
       <Fab
         color="primary"
-        aria-label="Share"
+        aria-label={t('mobileShareFab.tooltip')}
         onClick={() => navigate('/share')}
         sx={{
           display: { xs: 'inline-flex', md: 'none' },

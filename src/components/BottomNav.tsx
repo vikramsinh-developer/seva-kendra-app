@@ -6,19 +6,21 @@ import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import CallRoundedIcon from '@mui/icons-material/CallRounded';
 import { alpha } from '@mui/material/styles';
 import { Box, Paper, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const primaryNavItems = [
-  { to: '/', icon: <HomeRoundedIcon />, label: 'Home' },
-  { to: '/services', icon: <DesignServicesRoundedIcon />, label: 'Services' },
-  { to: '/gallery', icon: <CollectionsRoundedIcon />, label: 'Gallery' },
-  { to: '/about', icon: <InfoRoundedIcon />, label: 'About' },
-  { to: '/contact', icon: <CallRoundedIcon />, label: 'Contact' },
+  { to: '/', icon: <HomeRoundedIcon />, labelKey: 'common.nav.home' },
+  { to: '/services', icon: <DesignServicesRoundedIcon />, labelKey: 'common.nav.services' },
+  { to: '/gallery', icon: <CollectionsRoundedIcon />, labelKey: 'common.nav.gallery' },
+  { to: '/about', icon: <InfoRoundedIcon />, labelKey: 'common.nav.about' },
+  { to: '/contact', icon: <CallRoundedIcon />, labelKey: 'common.nav.contact' },
 ];
 
 const BottomNav: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const isRouteActive = (to: string) => (to === '/' ? location.pathname === '/' : location.pathname.startsWith(to));
 
@@ -74,7 +76,7 @@ const BottomNav: React.FC = () => {
               <Stack spacing={0.375} alignItems="center">
                 {item.icon}
                 <Typography sx={{ fontSize: '0.64rem', fontWeight: active ? 700 : 600, lineHeight: 1, whiteSpace: 'nowrap', maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {item.label}
+                  {t(item.labelKey)}
                 </Typography>
               </Stack>
             </Box>

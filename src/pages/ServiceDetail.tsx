@@ -2,20 +2,22 @@ import React from 'react';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import ScheduleRoundedIcon from '@mui/icons-material/ScheduleRounded';
 import { Avatar, Box, Button, Chip, Paper, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useParams, Link as RouterLink } from 'react-router-dom';
-import { services } from '../data/services';
+import { getLocalizedServices } from '../data/services';
 
 const ServiceDetail: React.FC = () => {
   const { id } = useParams();
   const index = Number(id ?? -1);
-  const service = services[index];
+  const { t } = useTranslation();
+  const service = getLocalizedServices(t)[index];
 
   if (!service) {
     return (
       <Paper sx={{ p: 4 }}>
-        <Typography variant="h2" gutterBottom>Service not found</Typography>
-        <Typography color="text.secondary" sx={{ mb: 2 }}>We could not find the requested service.</Typography>
-        <Button component={RouterLink} to="/services" startIcon={<ArrowBackRoundedIcon />}>Back to services</Button>
+        <Typography variant="h2" gutterBottom>{t('serviceDetail.notFoundTitle')}</Typography>
+        <Typography color="text.secondary" sx={{ mb: 2 }}>{t('serviceDetail.notFoundText')}</Typography>
+        <Button component={RouterLink} to="/services" startIcon={<ArrowBackRoundedIcon />}>{t('common.actions.backToServices')}</Button>
       </Paper>
     );
   }
@@ -23,7 +25,7 @@ const ServiceDetail: React.FC = () => {
   return (
     <Stack spacing={4}>
       <Button component={RouterLink} to="/services" startIcon={<ArrowBackRoundedIcon />} sx={{ alignSelf: 'flex-start' }}>
-        Back to services
+        {t('common.actions.backToServices')}
       </Button>
 
       <Paper sx={{ p: { xs: 3, md: 4 } }}>
@@ -48,7 +50,7 @@ const ServiceDetail: React.FC = () => {
             </Stack>
 
             <Box>
-              <Typography variant="h5" gutterBottom>Required or common documents</Typography>
+              <Typography variant="h5" gutterBottom>{t('serviceDetail.documentsHeading')}</Typography>
               <Stack component="ol" spacing={1} sx={{ pl: 3, m: 0 }}>
                 {service.documents.map((document) => (
                   <Typography key={document} component="li" color="text.secondary">
@@ -61,12 +63,12 @@ const ServiceDetail: React.FC = () => {
 
           <Paper variant="outlined" sx={{ p: 2.5, borderRadius: 4, bgcolor: 'rgba(255,255,255,0.72)' }}>
             <Box component="img" src={service.image} alt={service.title} sx={{ width: '100%', height: 260, objectFit: 'cover', borderRadius: 3, mb: 2.5 }} />
-            <Typography variant="h6" gutterBottom>Need help preparing before you visit?</Typography>
+            <Typography variant="h6" gutterBottom>{t('serviceDetail.helpTitle')}</Typography>
             <Typography color="text.secondary" sx={{ mb: 2.5 }}>
-              Bring your supporting documents, basic ID proof, and any application references. Our desk can help review and submit the request.
+              {t('serviceDetail.helpText')}
             </Typography>
             <Button component={RouterLink} to="/contact" variant="contained" fullWidth>
-              Contact the Kendra
+              {t('common.actions.contactKendra')}
             </Button>
           </Paper>
         </Box>
