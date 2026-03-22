@@ -36,7 +36,7 @@ let theme = createTheme({
     divider: alpha(brandColors.indigo, 0.12)
   },
   shape: {
-    borderRadius: 20
+    borderRadius: 16
   },
   typography: {
     fontFamily: 'Poppins, Segoe UI, sans-serif',
@@ -76,7 +76,9 @@ let theme = createTheme({
         html: {
           width: '100%',
           maxWidth: '100%',
-          overflowX: 'clip'
+          overflowX: 'clip',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none'
         },
         body: {
           background: `radial-gradient(circle at top left, ${alpha(brandColors.saffronLight, 0.18)} 0%, transparent 32%), radial-gradient(circle at bottom right, ${alpha(brandColors.forestLight, 0.18)} 0%, transparent 28%), ${brandColors.cream}`,
@@ -84,12 +86,21 @@ let theme = createTheme({
           width: '100%',
           maxWidth: '100%',
           margin: 0,
-          overflowX: 'clip'
+          overflowX: 'clip',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none'
         },
         '#root': {
           width: '100%',
           maxWidth: '100%',
-          overflowX: 'clip'
+          overflowX: 'clip',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none'
+        },
+        'html::-webkit-scrollbar, body::-webkit-scrollbar, #root::-webkit-scrollbar': {
+          display: 'none',
+          width: 0,
+          height: 0
         },
         a: {
           color: 'inherit',
@@ -118,7 +129,7 @@ let theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 24,
+          borderRadius: 18,
           border: `1px solid ${alpha(brandColors.indigo, 0.08)}`,
           boxShadow: `0 18px 50px ${alpha(brandColors.indigo, 0.08)}`
         }

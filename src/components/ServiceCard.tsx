@@ -56,7 +56,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             sx={{
               p: 0,
               border: 0,
-              borderRadius: 4,
+              borderRadius: 2,
               overflow: 'hidden',
               background: 'transparent',
               cursor: 'pointer'

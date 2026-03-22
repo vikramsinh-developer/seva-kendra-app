@@ -3,6 +3,7 @@ import { Box, Container } from '@mui/material';
 import Header from './Header';
 import BottomNav from './BottomNav';
 import Footer from './Footer';
+import MobileShareFab from './MobileShareFab';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </Container>
       </Box>
       <Footer />
+      <MobileShareFab />
       <BottomNav />
     </Box>
   );

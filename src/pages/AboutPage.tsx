@@ -1,8 +1,12 @@
 import React from 'react';
+import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
+import LanguageRoundedIcon from '@mui/icons-material/LanguageRounded';
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import PublicRoundedIcon from '@mui/icons-material/PublicRounded';
+import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded';
 import VerifiedUserRoundedIcon from '@mui/icons-material/VerifiedUserRounded';
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import { Box, Chip, Divider, Paper, Stack, Typography } from '@mui/material';
 
 const AboutPage: React.FC = () => {
   const pillars = [
@@ -23,13 +27,28 @@ const AboutPage: React.FC = () => {
     }
   ];
 
+  const servicePromise = [
+    'Application and form filling support',
+    'Printing, scanning, and document preparation',
+    'Utility bill payment assistance',
+    'Certificate and online submission guidance'
+  ];
+
   return (
     <Stack spacing={4}>
-      <Paper sx={{ p: { xs: 3, md: 5 } }}>
-        <Typography variant="h2" gutterBottom>About Us</Typography>
-        <Typography color="text.secondary" sx={{ maxWidth: 820 }}>
-          Gurudatta Maha e-Seva Kendra is a local digital service center in Maharashtra focused on making government, utility, and everyday documentation services easier to access. We combine practical guidance with digital tools so citizens can complete important tasks with less friction.
-        </Typography>
+      <Paper sx={{ p: { xs: 3, md: 5 }, background: 'linear-gradient(135deg, rgba(197,123,23,0.12) 0%, rgba(31,107,79,0.1) 100%)' }}>
+        <Stack spacing={2.5}>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.25} useFlexGap flexWrap="wrap">
+            <Chip icon={<LocationOnRoundedIcon />} label="Serving Nagthane, Satara" color="primary" variant="outlined" />
+            <Chip icon={<LanguageRoundedIcon />} label="Citizen support in Marathi, Hindi, and English" color="secondary" variant="outlined" />
+          </Stack>
+          <Box>
+            <Typography variant="h2" gutterBottom>About Us</Typography>
+            <Typography color="text.secondary" sx={{ maxWidth: 820 }}>
+              Gurudatta Maha e-Seva Kendra is a community-focused digital service center serving citizens with practical help for documents, online applications, payments, and day-to-day service tasks. The goal is simple: reduce confusion, save time, and make every visit useful.
+            </Typography>
+          </Box>
+        </Stack>
       </Paper>
 
       <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' } }}>
@@ -44,12 +63,43 @@ const AboutPage: React.FC = () => {
         ))}
       </Box>
 
-      <Paper sx={{ p: { xs: 3, md: 4 } }}>
-        <Typography variant="h5" gutterBottom>Why people visit the kendra</Typography>
-        <Typography color="text.secondary">
-          Residents and businesses use the kendra for applications, bill payments, record preparation, printing, scanning, and submission support. The goal is not just access to a computer, but access to a reliable process and someone who can guide it.
-        </Typography>
-      </Paper>
+      <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: '1.05fr 0.95fr' } }}>
+        <Paper sx={{ p: { xs: 3, md: 4 } }}>
+          <Stack spacing={2}>
+            <Stack direction="row" spacing={1.5} alignItems="center">
+              <AutoAwesomeRoundedIcon color="primary" />
+              <Typography variant="h5">Why people visit the kendra</Typography>
+            </Stack>
+            <Typography color="text.secondary">
+              Residents and businesses visit the kendra for help that is both digital and practical: understanding what is required, preparing correct documents, and completing the process with confidence.
+            </Typography>
+            <Divider />
+            <Stack spacing={1.25}>
+              {servicePromise.map((item) => (
+                <Stack key={item} direction="row" spacing={1.25} alignItems="center">
+                  <TaskAltRoundedIcon color="secondary" fontSize="small" />
+                  <Typography color="text.secondary">{item}</Typography>
+                </Stack>
+              ))}
+            </Stack>
+          </Stack>
+        </Paper>
+
+        <Paper sx={{ p: { xs: 3, md: 4 } }}>
+          <Stack spacing={2}>
+            <Stack direction="row" spacing={1.5} alignItems="center">
+              <GroupsRoundedIcon color="primary" />
+              <Typography variant="h5">Service approach</Typography>
+            </Stack>
+            <Typography color="text.secondary">
+              The center is designed to feel approachable and efficient. Instead of only offering access to online systems, it offers guided assistance, local understanding, and real follow-through.
+            </Typography>
+            <Typography color="text.secondary">
+              Whether the task is a certificate request, exam form, payment, or document preparation, the focus stays on clean execution and clear communication.
+            </Typography>
+          </Stack>
+        </Paper>
+      </Box>
     </Stack>
   );
 };

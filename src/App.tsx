@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
 import ContactPage from './pages/ContactPage';
 import HomePage from './components/HomePage';
 import ServicesPage from './pages/ServicePage';
@@ -14,6 +15,7 @@ import './styles/globals.css';
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />

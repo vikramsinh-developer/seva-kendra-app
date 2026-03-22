@@ -86,7 +86,7 @@ const Hero: React.FC<HeroProps> = ({
         <Box
           sx={{
             position: 'relative',
-            borderRadius: 5,
+            borderRadius: 3,
             overflow: 'hidden',
             minHeight: { xs: 220, sm: 260, md: 360 },
             boxShadow: '0 24px 60px rgba(29, 53, 87, 0.18)'
