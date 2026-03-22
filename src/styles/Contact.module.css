@@ -1,0 +1,231 @@
+.section {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  padding: 40px;
+  margin-bottom: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.sectionTitle {
+  margin-top: 0;
+  margin-bottom: 32px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contactDetails {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.detailItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: rgba(0, 212, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  transition: all var(--transition);
+}
+
+.detailItem:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateX(4px);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.detailIcon {
+  font-size: 1.8rem;
+  color: var(--primary);
+  min-width: 32px;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+}
+
+.detailContent {
+  flex: 1;
+}
+
+.detailLabel {
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+}
+
+.detailValue {
+  color: var(--text);
+  word-break: break-word;
+  line-height: 1.6;
+}
+
+.contactLink {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition);
+  position: relative;
+}
+
+.contactLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00d4ff 0%, #8b5cf6 100%);
+  transition: width var(--transition);
+}
+
+.contactLink:hover::after {
+  width: 100%;
+}
+
+.form {
+  margin-top: 40px;
+  display: grid;
+  gap: 24px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0, 212, 255, 0.15);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.formInput,
+.formTextarea {
+  padding: 14px 16px;
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all var(--transition);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--text);
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: var(--text-lighter);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: rgba(0, 212, 255, 0.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 140px;
+  font-family: 'Courier New', monospace;
+}
+
+.submitButton {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.submitButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+}
+
+.submitButton:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 30px;
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .detailItem {
+    padding: 16px;
+  }
+
+  .form {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .contactDetails {
+    gap: 12px;
+  }
+
+  .detailItem {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .detailIcon {
+    font-size: 1.4rem;
+  }
+
+  .detailLabel {
+    font-size: 0.8rem;
+  }
+
+  .detailValue {
+    font-size: 0.9rem;
+  }
+
+  .form {
+    gap: 12px;
+    padding-top: 20px;
+  }
+
+  .submitButton {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+}

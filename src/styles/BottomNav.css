@@ -1,0 +1,86 @@
+/* Modern, robust BottomNav */
+.bottomNav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-top: 1px solid #eee;
+  z-index: 1000;
+  height: 60px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.bnItem {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #666;
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  outline: none;
+}
+
+.bnItem .icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-bottom: 0.15em;
+  display: block;
+  text-align: center;
+  max-height: 1.3em;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bnItem .label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+  max-height: 1.2em;
+}
+
+.bnItem.active, .bnItem:focus, .bnItem:hover {
+  color: #FFCE1B;
+  background: rgba(255, 206, 27, 0.12);
+}
+
+@media (max-width: 600px) {
+  .bottomNav {
+    height: 52px;
+    max-width: 100vw;
+    font-size: 0.97em;
+  }
+  .bnItem {
+    max-width: 60px;
+    border-radius: 8px;
+  }
+  .bnItem .icon {
+    font-size: 1.08rem;
+    margin-bottom: 0.12em;
+    max-height: 1.1em;
+  }
+  .bnItem .label {
+    font-size: 0.6rem;
+    max-height: 1em;
+  }
+}

@@ -1,0 +1,180 @@
+.serviceCard {
+  flex: 1 1 200px;
+  min-width: 160px;
+  background-color: var(--bg);
+  border-radius: 7px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06);
+  transition: all var(--transition);
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: default;
+}
+
+.serviceCard:hover {
+  box-shadow: 0 4px 15px 0 rgba(22, 160, 133, 0.15);
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.serviceHeader {
+  margin-bottom: 8px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.subheaderIcon {
+  font-size: 1rem;
+}
+
+.documentsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  counter-reset: document-counter;
+}
+
+.documentItem {
+  counter-increment: document-counter;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.documentItem::before {
+  content: counter(document-counter) ". ";
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.imageContainer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.documentImage {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.documentImage:hover {
+  transform: scale(1.05);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.closeButton {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition);
+}
+
+.closeButton:hover {
+  background-color: var(--primary-dark);
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .serviceCard {
+    padding: 16px;
+    flex: 1 1 150px;
+  }
+
+  .icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .serviceCard {
+    padding: 12px;
+    min-width: 100%;
+  }
+
+  .icon {
+    font-size: 1.8rem;
+  }
+
+  .title {
+    font-size: 0.95rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+}

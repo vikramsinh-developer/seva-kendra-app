@@ -1,0 +1,87 @@
+.section {
+  background-color: var(--surface);
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.sectionTitle {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--primary-dark);
+  font-size: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 18px;
+    margin-bottom: 18px;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+
+  .grid {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tabButton {
+  padding: 8px 16px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all var(--transition);
+}
+
+.tabButton:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.tabButton.active {
+  background: var(--primary);
+  color: #ffffff;
+}
