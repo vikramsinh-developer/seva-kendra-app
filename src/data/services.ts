@@ -8,6 +8,8 @@ export interface Service {
   image: string;
 }
 
+const serviceImage = `${process.env.PUBLIC_URL}/images/sample-image.jpeg`;
+
 export const services: Service[] = [
   {
     title: 'Government Forms',
@@ -22,7 +24,7 @@ export const services: Service[] = [
     ],
     highlights: ['Form verification', 'Digital upload support', 'Status follow-up'],
     turnaround: 'Same-day guidance',
-    image: '/images/sample-image.jpeg'
+    image: serviceImage
   },
   {
     title: 'Utility Bill Payment',
@@ -37,7 +39,7 @@ export const services: Service[] = [
     ],
     highlights: ['Instant receipts', 'Multiple providers', 'Monthly payment support'],
     turnaround: 'Within minutes',
-    image: '/images/sample-image.jpeg'
+    image: serviceImage
   },
   {
     title: 'Online Services',
@@ -52,7 +54,7 @@ export const services: Service[] = [
     ],
     highlights: ['Portal registration', 'Document scanning', 'Application tracking'],
     turnaround: 'Guided end-to-end',
-    image: '/images/sample-image.jpeg'
+    image: serviceImage
   },
   {
     title: 'Exam Form Filling',
@@ -67,7 +69,7 @@ export const services: Service[] = [
     ],
     highlights: ['Photo resizing', 'Fee payment support', 'Deadline reminders'],
     turnaround: 'Same-session completion',
-    image: '/images/sample-image.jpeg'
+    image: serviceImage
   },
   {
     title: 'Courier Logistics',
@@ -82,7 +84,7 @@ export const services: Service[] = [
     ],
     highlights: ['Booking assistance', 'Tracking guidance', 'Document-safe dispatch'],
     turnaround: 'Same-day dispatch support',
-    image: '/images/sample-image.jpeg'
+    image: serviceImage
   },
   {
     title: 'Printing & Scanning',
@@ -97,7 +99,7 @@ export const services: Service[] = [
     ],
     highlights: ['Color and black & white', 'Multiple paper sizes', 'Soft copy delivery'],
     turnaround: 'Walk-in service',
-    image: '/images/sample-image.jpeg'
+    image: serviceImage
   },
   {
     title: 'Dakhale',
@@ -112,6 +114,6 @@ export const services: Service[] = [
     ],
     highlights: ['Record preparation', 'Verification support', 'Submission guidance'],
     turnaround: 'Handled with review support',
-    image: '/images/sample-image.jpeg'
+    image: serviceImage
   }
 ];
